@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col">
+    <div ngbDropdown placement="bottom-right" class="d-inline-block">
+      <button
+        class="btn btn-outline-primary"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
+        <img src="../../assets/ic_menu.png" alt="menu" class="dropdown__img" />
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="onChangePassword()">
+          Change Password
+        </button>
+        <button ngbDropdownItem (click)="onLogout()">Sign Out</button>
+      </div>
+    </div>
+  </div>
+</div>

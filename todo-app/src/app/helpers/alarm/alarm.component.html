@@ -1,0 +1,47 @@
+<div class="modal-body">
+  <div class="container">
+    <span>
+      <div class="modal-body__urgency-time">
+        <div class="circle" [ngStyle]="{'background-color': getUrgencyColor()}"></div>
+        <h1 class="modal-body__time">{{ getTime() }}</h1>
+      </div>
+      <div class="modal-body__title-desription">
+        <h1 class="modal-body__h1">{{ todo.title }}</h1>
+        <h2>{{ todo.description }}</h2>
+      </div>
+    </span>
+    <div class="modal-body__buttons">
+      <button type="button" class="btn btn-outline-primary"
+        (click)="activeModal.close('Close click'); onCompleteTodo()">
+        Done
+      </button>
+      <div class="row">
+        <div class="col">
+          <div ngbDropdown placement="bottom" class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+              Later
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <div class="radio-buttons">
+                <input type="radio" class="radio" name="alarm" value="5" id="5" /><label class="label" for="5"
+                  (click)="setAlarm(5); activeModal.close('Close click')">5 min.</label>
+                <input type="radio" class="radio" name="alarm" value="10" id="10" /><label class="label" for="10"
+                  (click)="setAlarm(10); activeModal.close('Close click')">10 min.</label>
+                <input type="radio" class="radio" name="alarm" value="30" id="30" /><label class="label" for="30"
+                  (click)="setAlarm(30); activeModal.close('Close click')">30 min.</label>
+                <input type="radio" class="radio" name="alarm" value="60" id="60" /><label class="label" for="60"
+                  (click)="setAlarm(60); activeModal.close('Close click')">1 hour</label>
+                <input type="radio" class="radio" name="alarm" value="180" id="180" /><label class="label" for="180"
+                  (click)="setAlarm(180); activeModal.close('Close click')">3 hours</label>
+                <input type="radio" class="radio" name="alarm" value="1440" id="1440" /><label class="label" for="1440"
+                  (click)="setAlarm(1440); activeModal.close('Close click')">1 day</label>
+                <input type="radio" class="radio" name="alarm" value="10080" id="10080" #alarm10080 /><label
+                  class="label" for="10080" (click)="setAlarm(10080); activeModal.close('Close click')">1 week</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

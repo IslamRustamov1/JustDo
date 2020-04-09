@@ -1,0 +1,50 @@
+<div class="documents">
+  <div class="images">
+    <img
+      class="images__img1"
+      src="../../assets/background.png"
+      alt="background"
+    />
+    <img class="images__img2" src="../../assets/logo.png" alr="logo" />
+  </div>
+
+  <div class="container">
+    <div class="container__a">
+      <a href="javascript:history.back()"
+        ><img src="../../assets/ic_arrow_left.png"
+      /></a>
+    </div>
+    <div *ngIf="route === 'conditions'" class="conditions">
+      <h1 class="container__h1">Terms conditions</h1>
+      <span class="container__p">
+        <p>{{ data.header }}</p>
+      </span>
+      <h2 class="container__h2">Accounts and membership</h2>
+      <span class="container__p">
+        <p>{{ data.body }}</p>
+      </span>
+      <h2 class="container__h2">User content</h2>
+      <span class="container__p">
+        <p>{{ data.footer }}</p>
+      </span>
+    </div>
+    <div *ngIf="route === 'policy'" class="policy">
+      <h1 class="container__h1">Privacy policy</h1>
+      <span class="container__p">
+        <p>{{ data.header }}</p>
+      </span>
+      <h2 class="container__h2">Information Collection And Use</h2>
+      <span class="container__p">
+        <p>{{ data.bodyInformation }}</p>
+      </span>
+      <h2 class="container__h2">Log Data</h2>
+      <span class="container__p">
+        <p>{{ data.bodyLog }}</p>
+      </span>
+      <h2 class="container__h2">Communcations</h2>
+      <span class="container__p">
+        <p>{{ data.footer }}</p>
+      </span>
+    </div>
+  </div>
+</div>

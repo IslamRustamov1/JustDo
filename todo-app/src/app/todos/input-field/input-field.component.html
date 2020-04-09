@@ -1,0 +1,93 @@
+<div class="input-field">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Enter task title..." class="input-field__input" #inputValue
+      (focus)="inputValue.placeholder = ''" (blur)="inputValue.placeholder = 'Enter task title...'"
+      (keydown.enter)="onAddTodo(inputValue.value); inputValue.value = ''" />
+  </mat-form-field>
+  <div class="container">
+    <div class="container__imgs">
+      <div class="row">
+        <div class="col">
+          <div ngbDropdown placement="top" class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+              <img src="../../assets/ic_calendar.png" class="container__img" />
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <ngb-datepicker [(ngModel)]="model"></ngb-datepicker>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div ngbDropdown placement="top" class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+              <img src="../../assets/ic_clock.png" class="container__img" />
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <div class="time">
+                <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div ngbDropdown placement="top" class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+              <img src="../../assets/ic_alarm.png" alt="menu" class="dropdown__img" />
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <div class="radio-buttons">
+                <input type="radio" class="radio" name="alarm" value="5" id="5input" /><label class="label" for="5input"
+                  (click)="setAlarm(5)">5 min.</label>
+                <input type="radio" class="radio" name="alarm" value="10" id="10input" /><label class="label"
+                  for="10input" (click)="setAlarm(10)">10 min.</label>
+                <input type="radio" class="radio" name="alarm" value="30" id="30input" /><label class="label"
+                  for="30input" (click)="setAlarm(30)">30 min.</label>
+                <input type="radio" class="radio" name="alarm" value="60" id="60input" /><label class="label"
+                  for="60input" (click)="setAlarm(60)">1 hour</label>
+                <input type="radio" class="radio" name="alarm" value="180" id="180input" /><label class="label"
+                  for="180input" (click)="setAlarm(180)">3 hours</label>
+                <input type="radio" class="radio" name="alarm" value="1440" id="1440input" /><label class="label"
+                  for="1440" input (click)="setAlarm(1440)">1 day</label>
+                <input type="radio" class="radio" name="alarm" value="10080" id="10080input" #alarm10080 /><label
+                  class="label" for="10080input" (click)="setAlarm(10080)">1 week</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div ngbDropdown placement="top" class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+              <span class="container__circle"></span>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <div class="urgency">
+                <div class="urgency__radio-buttons" *ngFor="let urgency of urgencies">
+                  <div class="urgency__radio">
+                    <span class="urgency__circle" [ngStyle]="{ 'background-color': urgency.color }"></span>
+                    <input type="radio" class="radio" name="urgency" value="{{ urgency.name }}"
+                      id="{{ urgency.name + 'input' }}" /><label class="label" for="{{ urgency.name + 'input' }}"
+                      (click)="setUrgency(urgency.name)">{{ urgency.name }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="input-field__button" (click)="onAddTodo(inputValue.value); inputValue.value = ''">
+        Send
+      </button>
+    </div>
+  </div>
+</div>

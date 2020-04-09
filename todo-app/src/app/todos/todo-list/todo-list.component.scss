@@ -1,0 +1,55 @@
+.todo-list {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 75%;
+  max-width: 75%;
+  margin-right: 0;
+  margin-left: 50px * 100% / (1366px - 221px);
+  padding-top: 25px * 100% / 768px;
+}
+
+.dropdown {
+  position: absolute;
+  left: 1303px * 100% / 1366px;
+  top: 26px * 100% / 768px;
+}
+
+.todos {
+  max-height: 80%;
+  width: 100%;
+  overflow: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey;
+  opacity: 0.5;
+  border-radius: 10px;
+}
+
+.todos__button {
+  border-style: none;
+  outline: none;
+  background: transparent;
+  color: #bbbbc7;
+  font-size: 20px;
+  font-size: 20px;
+  padding: 0;
+  padding-bottom: 20px * 100% / 768px;
+}
+
+.todos__app-todo {
+  padding-bottom: 10px * 100% / 768px;
+}

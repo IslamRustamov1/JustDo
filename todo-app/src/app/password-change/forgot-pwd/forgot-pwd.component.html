@@ -1,0 +1,26 @@
+<div class="forgot-pwd">
+  <div class="images">
+    <img class="images__img1" src="../../assets/background.png" alt="background" />
+    <img class="images__img2" src="../../assets/logo.png" alr="logo" />
+  </div>
+
+  <div class="container">
+    <div class="container__a">
+      <a href="login"><img src="../../assets/ic_arrow_left.png" /></a>
+    </div>
+    <h1 class="container__h1">Forgot Password</h1>
+    <p class="container__p">Please enter your email below to receive your</p>
+    <p class="container__p">password reset instruction</p>
+    <form class="form" [formGroup]="reactiveForm">
+      <div class="form__input">
+        <mat-form-field>
+          <input matInput type="text" placeholder="E-mail" #email (focus)="email.placeholder = ''"
+            (blur)="email.placeholder = 'E-mail'" />
+        </mat-form-field>
+      </div>
+    </form>
+    <button class="container__button" (click)="onSubmit(email.value)">
+      Send
+    </button>
+  </div>
+</div>

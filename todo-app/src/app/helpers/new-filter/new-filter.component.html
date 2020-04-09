@@ -1,0 +1,39 @@
+<div class="modal-body">
+  <div class="container">
+    <div>
+      <h1>Enter new filter name</h1>
+      <input type="text" placeholder="New filter name" class="new-filter__input" maxlength="11" #filter
+        (focus)="filter.placeholder = ''" (blur)="setName(filter.value); filter.placeholder = 'New filter name'" />
+    </div>
+    <div class="container">
+      <h1>Choose color</h1>
+      <input type="color" id="favcolor" name="favcolor" value="#ff0000" #color (change)="setColor(color.value)" />
+    </div>
+    <div class="container">
+      <h1>Select new filter priority</h1>
+      <div class="row">
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+              {{ getPriority() }}
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="container__priorities">
+              <span *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                <button ngbDropdownItem (click)="setPriority(number)">
+                  {{ number }}
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <h2 class="container__h2">(1 - the lowest, 10 - the highest)</h2>
+      </div>
+    </div>
+    <div class="modal-body__buttons">
+      <button type="button" class="btn btn-outline-primary"
+        (click)="activeModal.close('Close click'); createNewFilter()">
+        Create new filter
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+.sidebar {
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  padding-left: 12.1%;
+  height: 100%;
+  background: transparent linear-gradient(14deg, #56ccf2 0%, #2f80ed 100%) 0% 0%
+    no-repeat padding-box;
+}
+
+.sidebar__h1 {
+  font-size: 20px;
+  font-weight: lighter;
+  color: white;
+  padding-bottom: 10%;
+}
+
+.sidebar__h1__img {
+  padding-left: 9%;
+}
+
+.sidebar__img {
+  height: 9.5%;
+  width: 55.1%;
+  padding-top: 10.8%;
+  margin-bottom: 10%;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__radio {
+  display: none;
+}
+
+.sidebar__label {
+  padding-bottom: 7.6%;
+  color: white;
+}
+
+.sidebar__radio:checked + .sidebar__label {
+  text-decoration: underline;
+}
+
+.sidebar__button {
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 40px;
+  padding: 0;
+  color: white;
+}
+
+.radio-container__button {
+  display: none;
+}
+
+.ng-star-inserted:hover {
+  .radio-container__button {
+    padding-left: 5%;
+    display: inline-block;
+  }
+}

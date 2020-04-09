@@ -1,0 +1,31 @@
+<div class="todo-list">
+  <app-sidebar></app-sidebar>
+  <div class="container">
+    <div class="dropdown">
+      <app-dropdown></app-dropdown>
+    </div>
+    <div class="todos">
+      <span *ngIf="filter === 'all'; else prioritizedTodos">
+        <div *ngFor="let todosList of formattedTodos">
+          <button (click)="toggleTodoList(todosList)" class="todos__button">
+            {{ todosList.date }}
+          </button>
+          <div class="todos__app-todo">
+            <div *ngFor="let todo of todosList.todos" [hidden]="todosList.hidden">
+              <app-todo [todo]="todo" [@fade]="todosList.hidden ? 'open' : 'closed'"></app-todo>
+            </div>
+          </div>
+        </div>
+      </span>
+      <ng-template #prioritizedTodos>
+        <div class="todos__app-todo">
+          <div *ngFor="let todo of todos">
+            <app-todo [todo]="todo"></app-todo>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+    <app-input-field></app-input-field>
+  </div>
+</div>

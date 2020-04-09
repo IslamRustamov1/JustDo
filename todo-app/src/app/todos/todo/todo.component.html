@@ -1,0 +1,111 @@
+<div class="todo {{ todo.completed ? 'todo_completed' : '' }}">
+  <div>
+    <div class="container">
+      <input type="checkbox" class="todo__checkbox" id="{{ todo._id }}" [checked]="todo.completed"
+        (click)="onCompleteTodo()" />
+      <label for="{{ todo._id }}" class="todo__label"></label>
+      <div>
+        <span *ngIf="editing" class="todo__span">
+          <input type="text" class="todo__title" #title (blur)="endTodoTitleEditing(title.value)"
+            value="{{ todo.title }}" autofocus />
+        </span>
+        <p class="todo__p" (dblclick)="onStartTitleEditing()" *ngIf="!editing">
+          {{ todo.title }}
+        </p>
+        <input type="text" class="todo__p todo__description" placeholder="{{
+            todo.description === ' ' ? 'Enter description...' : null
+          }}" value="{{ todo.description !== ' ' ? todo.description : null }}" #inputValue
+          (blur)="endTodoEditing(inputValue.value)" />
+        <div class="todo__data">
+          <div class="todo__priority">
+            <div class="row">
+              <div class="col">
+                <div ngbDropdown placement="bottom" class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    <div class="circle" [ngStyle]=" { 'background-color' : getUrgencyColor() }"></div>
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <div class="urgency">
+                      <div class="urgency__radio-buttons" *ngFor="let urgency of urgencies">
+                        <div class="urgency__radio">
+                          <span class="urgency__circle" [ngStyle]="{ 'background-color': urgency.color }"></span>
+                          <input type="radio" class="radio" name="urgency" value="{{ urgency.name }}"
+                            id="{{ urgency.name }}" /><label class="label" for="{{ urgency.name }}"
+                            (click)="setUrgency(urgency.name)">{{ urgency.name }}</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>{{ todo.urgency }} priority</p>
+          </div>
+
+          <div class="todo__clock">
+            <div class="row">
+              <div class="col">
+                <div ngbDropdown placement="bottom" class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    <img src="../../assets/ic_clock.png" class="container__img" />
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <div class="time">
+                      <ngb-timepicker (click)="setTime()" [(ngModel)]="time"></ngb-timepicker>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>{{ getTime() }}</p>
+          </div>
+
+          <div class="todo__alarm">
+            <div class="row">
+              <div class="col">
+                <div ngbDropdown placement="bottom" class="d-inline-block">
+                  <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    <img src="../../assets/ic_alarm.png" alt="alarm" height="12px" />
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <div class="radio-buttons">
+                      <input type="radio" class="radio" name="alarm" value="5" id="5" /><label class="label" for="5"
+                        (click)="setAlarm(5)">5 min.</label>
+                      <input type="radio" class="radio" name="alarm" value="10" id="10" /><label class="label" for="10"
+                        (click)="setAlarm(10)">10 min.</label>
+                      <input type="radio" class="radio" name="alarm" value="30" id="30" /><label class="label" for="30"
+                        (click)="setAlarm(30)">30 min.</label>
+                      <input type="radio" class="radio" name="alarm" value="60" id="60" /><label class="label" for="60"
+                        (click)="setAlarm(60)">1 hour</label>
+                      <input type="radio" class="radio" name="alarm" value="180" id="180" /><label class="label"
+                        for="180" (click)="setAlarm(180)">3 hours</label>
+                      <input type="radio" class="radio" name="alarm" value="1440" id="1440" /><label class="label"
+                        for="1440" (click)="setAlarm(1440)">1 day</label>
+                      <input type="radio" class="radio" name="alarm" value="10080" id="10080" #alarm10080 /><label
+                        class="label" for="10080" (click)="setAlarm(10080)">1 week</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>{{ getAlarm() }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="../../assets/ic_trash.png" alt="delete todo" class="todo__delete" (click)="openModal(content)" />
+  <ng-template #content let-modal>
+    <div class="modal-body">
+      <p>Are you sure you want to delete the task?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click'); onDeleteTodo()">
+        Delete
+      </button>
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">
+        Cancel
+      </button>
+    </div>
+  </ng-template>
+</div>

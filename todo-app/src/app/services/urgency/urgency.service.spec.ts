@@ -1,0 +1,17 @@
+import { TestBed } from "@angular/core/testing";
+
+import { UrgencyService } from "./urgency.service";
+import { Apollo } from "apollo-angular";
+
+describe("UrgencyService", () => {
+  let service: UrgencyService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({ providers: [Apollo] });
+    service = TestBed.inject(UrgencyService);
+  });
+
+  it("should be created", () => {
+    expect(service).toBeTruthy();
+  });
+});

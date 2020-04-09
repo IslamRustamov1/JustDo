@@ -1,0 +1,86 @@
+<div class="signup">
+  <div class="images">
+    <img class="images__img1" src="../../assets/background.png" alt="background" />
+    <img class="images__img2" src="../../assets/logo.png" alr="logo" />
+  </div>
+  <ngx-spinner></ngx-spinner>
+  <div class="container">
+    <p class="container__p">Sign Up</p>
+
+    <form class="form" [formGroup]="reactiveForm">
+      <div class="form__input">
+        <mat-form-field>
+          <input matInput placeholder="E-mail" #email formControlName="email" (focus)="email.placeholder = ''"
+            (blur)="email.placeholder = 'E-mail'" />
+          <span class="error" *ngIf="isControlInvalid('email')">
+            Please enter a valid email address
+          </span>
+        </mat-form-field>
+      </div>
+      <div class="form__input">
+        <mat-form-field>
+          <input matInput type="{{ passwordType }}" id="password" formControlName="password" placeholder="Password"
+            #password (focus)="password.placeholder = ''" (blur)="password.placeholder = 'Password'" />
+          <span class="form__input__img" *ngIf="passwordType === 'password'" (click)="toggleType(password.id)">
+            <img src="../../assets/ic_eye_visible.png" />
+          </span>
+          <span class="form__input__img" *ngIf="passwordType === 'text'" (click)="toggleType(password.id)">
+            <img src="../../assets/ic_eye_unvisible.png" />
+          </span>
+          <span *ngIf="password.value !== ''">
+            <span class="error" *ngIf="reactiveForm.hasError('invalidLength')">
+              Minimum password length: 8
+            </span>
+            <span class="error" *ngIf="reactiveForm.hasError('spaceOrNewLine')">
+              Spaces and new lines are not allowed
+            </span>
+            <span class="error" *ngIf="reactiveForm.hasError('fewCapitals')">
+              At least 2 capital letters required
+            </span>
+            <span class="error" *ngIf="reactiveForm.hasError('fewDigits')">
+              At least 1 digit required
+            </span>
+            <span class="error" *ngIf="reactiveForm.hasError('fewSpecialChars')">
+              At least 1 special character required (@,.!?^ and etc.)
+            </span>
+          </span>
+        </mat-form-field>
+      </div>
+      <div class="form__input">
+        <mat-form-field>
+          <input matInput type="{{ confPasswordType }}" id="confPassword" formControlName="confPassword"
+            placeholder="Confirm password" #confPassword (focus)="confPassword.placeholder = ''"
+            (blur)="confPassword.placeholder = 'Confirm password'" />
+          <span class="form__input__img" *ngIf="confPasswordType === 'password'" (click)="toggleType(confPassword.id)">
+            <img src="../../assets/ic_eye_visible.png" />
+          </span>
+          <span class="form__input__img" *ngIf="confPasswordType === 'text'" (click)="toggleType(confPassword.id)">
+            <img src="../../assets/ic_eye_unvisible.png" />
+          </span>
+          <span class="error" *ngIf="reactiveForm.hasError('invalidPwds')">
+            Passwords does not match
+          </span>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <div class="authentication">
+      <button class="authentication__button" (click)="onSubmit(email.value, password.value, confPassword.value)">
+        Sign Up
+      </button>
+      <p class="authentication__p">
+        I already have an account. <a href="/login">Sign In</a>
+      </p>
+    </div>
+
+    <div class="container__footer">
+      <p class="footer__p">
+        By accessing your account, you agree to our
+      </p>
+      <p class="footer__p">
+        <a href="terms-conditions">Terms conditions</a> and
+        <a href="privacy-policy">Privacy Policy</a>
+      </p>
+    </div>
+  </div>
+</div>

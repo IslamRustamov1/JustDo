@@ -1,0 +1,16 @@
+.dropdown-toggle::after {
+  display: none;
+}
+
+.btn {
+  background: transparent linear-gradient(18deg, #56ccf2 0%, #2f80ed 100%) 0% 0%
+    no-repeat padding-box;
+
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+}
+
+.dropdown {
+  padding-right: 25%;
+}

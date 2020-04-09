@@ -1,0 +1,67 @@
+h1 {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-body__urgency-time {
+  display: flex;
+  align-items: center;
+}
+
+.modal-body__title-desription {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body__buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body__time {
+  padding-left: 10px;
+}
+
+.radio-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.radio {
+  display: none;
+}
+
+.radio:checked + .label {
+  color: blue;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.circle {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
+
+.grey {
+  background-color: #bbbbc7;
+}
+
+.red {
+  background-color: #f24a3c;
+}
+
+.orange {
+  background-color: #f1a41f;
+}
+
+.blue {
+  background-color: #56ccf2;
+}

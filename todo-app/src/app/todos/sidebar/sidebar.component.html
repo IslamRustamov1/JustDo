@@ -1,0 +1,20 @@
+<div class="sidebar">
+  <img src="../../assets/logo.png" class="sidebar__img" />
+  <h1 class="sidebar__h1">
+    Priority
+  </h1>
+  <div class="radio-container">
+    <input type="radio" class="sidebar__radio" name="radio" id="all" checked /><label class="sidebar__label" for="all"
+      (click)="onChangeFilter('all')">All</label>
+    <span *ngFor="let urgency of urgencies">
+      <input type="radio" class="sidebar__radio" name="radio" id="{{ urgency.name }}" /><label class="sidebar__label"
+        for="{{ urgency.name }}" (click)="onChangeFilter(urgency.name)">{{ urgency.name }}</label>
+      <span *ngIf="urgency._id !== ''">
+
+        <img src="../../../assets/times-solid.svg" alt="delete" height="22" width="22" (click)="deleteUrgency(urgency)"
+          class="radio-container__button" />
+      </span>
+    </span>
+  </div>
+  <button class="sidebar__button" (click)="createNewFilter()">+</button>
+</div>
