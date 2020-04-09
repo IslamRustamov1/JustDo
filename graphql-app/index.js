@@ -1,0 +1,31 @@
+const { ApolloServer } = require('apollo-server');
+const mongoose = require('mongoose');
+
+const typeDefs = require('./typeDefinitions/index');
+const resolvers = require('./resolvers/index');
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => {
+    const authorization = req.headers.authorization || '';
+    return {
+      authorization,
+    };
+  },
+});
+
+mongoose
+  .connect('mongodb://todo-db:27017', {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log('MongoDB is connected ...');
+    return server.listen({
+      port: 3000,
+    });
+  })
+  .then((res) => {
+    console.log('Server running at ', res.url);
+  });

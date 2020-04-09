@@ -1,0 +1,41 @@
+{
+  "name": "graphql-app",
+  "version": "1.0.0",
+  "description": "ESKEEEETIT",
+  "main": "index.js",
+  "scripts": {
+    "seed": "node seed.js",
+    "test": "NODE_ENV=test jest --testPathPattern='./__tests__/.*\\.test\\.js$' --detectOpenHandles --runInBand --forceExit"
+  },
+  "keywords": [
+    "mlem"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/register": "^7.9.0",
+    "apollo-boost": "^0.4.7",
+    "apollo-fetch": "^0.7.0",
+    "apollo-server": "^2.11.0",
+    "apollo-server-integration-testing": "^2.3.0",
+    "apollo-server-testing": "^2.11.0",
+    "bcryptjs": "^2.4.3",
+    "cross-fetch": "^3.0.4",
+    "crypto": "^1.0.1",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "jest": "^25.2.7",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.7",
+    "mongoose-seed": "^0.6.0",
+    "nodemailer": "^6.4.6",
+    "nodemon": "^2.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupTestFrameworkScriptFile": "./__tests__/setup.js",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}
