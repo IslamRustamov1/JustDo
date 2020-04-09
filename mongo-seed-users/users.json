@@ -1,0 +1,13 @@
+[
+  {
+    "_id": { "$oid": "5143afc66d44e1ceb372121e" },
+    "email": "test@test.ru",
+    "password": "$2a$10$bidUHASb0LDwvFTJeJDgLeSrxyhJws4mqlNhAbJQMqTehI7yL5b.a",
+    "todos": [
+      { "$oid": "5143afc66d44e1ceb3721211" },
+      { "$oid": "5143afc66d44e1ceb3721212" },
+      { "$oid": "5143afc66d44e1ceb3721213" },
+      { "$oid": "5143afc66d44e1ceb3721214" }
+    ]
+  }
+]
