@@ -1,0 +1,33 @@
+version: '3'
+services:
+  api:
+    build: ./graphql-app
+    ports:
+      - '3000:3000'
+    links:
+      - db
+    container_name: graphql-api
+  client:
+    build: ./todo-app
+    ports:
+      - '4200:4200'
+    container_name: graphql-client
+  mongo-seed-users:
+    image: mongo
+    links:
+      - db
+    volumes:
+      - ./mongo-seed-users:/mongo-seed-users
+    command: 'bash -c "mongoimport --host db --type json --file /mongo-seed-users/users.json --jsonArray"'
+  mongo-seed-todos:
+    image: mongo
+    links:
+      - db
+    volumes:
+      - ./mongo-seed-todos:/mongo-seed-todos
+    command: 'bash -c "mongoimport --host db --type json --file /mongo-seed-todos/todos.json --jsonArray"'
+  db:
+    image: mongo
+    ports:
+      - '27017:27017'
+    container_name: todo-db
