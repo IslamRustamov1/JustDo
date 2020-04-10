@@ -15,17 +15,17 @@ const server = new ApolloServer({
   },
 });
 
-mongoose
-  .connect('mongodb://todo-db:27017', {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  })
-  .then(() => {
-    console.log('MongoDB is connected ...');
-    return server.listen({
-      port: 3000,
-    });
-  })
-  .then((res) => {
-    console.log('Server running at ', res.url);
-  });
+mongoose.connect('mongodb://todo-db:27017', {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
+mongoose.connection.on('error', (error) => console.log(error));
+
+const db = mongoose.connection;
+
+!db
+  ? console.log('Error connecting db')
+  : console.log('Db connected successfully');
+
+server.listen({ port: 3000 });
+console.log('Server running at ', 3000);
