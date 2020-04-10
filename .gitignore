@@ -1,3 +1,10 @@
 api
 client
 data-node
+mongo/data/*
+graphql-app/seed.js
+graphql-app/coverage
+graphql-app/node_modules
+todo-app/.vscode
+todo-app/dist
+todo-app/node_modules
