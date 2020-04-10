@@ -1,7 +1,21 @@
-FROM node:12-alpine as build
-WORKDIR /app
-COPY package.json /app/package.json
-RUN npm install 
-RUN npm install -g @angular/cli@9.0.7
-COPY . /app
-CMD ng serve --host 0.0.0.0
+FROM node:12-alpine as builder
+
+COPY package.json package-lock.json ./
+
+RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
+
+WORKDIR /ng-app
+
+COPY . .
+
+RUN npm run ng build -- --prod --output-path=dist
+
+FROM nginx:1.14.1-alpine
+
+COPY nginx/default.conf /etc/nginx/conf.d/
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=builder /ng-app/dist /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
