@@ -10,24 +10,13 @@ services:
   client:
     build: ./todo-app
     ports:
-      - '4200:4200'
+      - '4200:80'
     container_name: graphql-client
-  mongo-seed-users:
-    image: mongo
-    links:
-      - db
-    volumes:
-      - ./mongo-seed-users:/mongo-seed-users
-    command: 'bash -c "mongoimport --host db --type json --file /mongo-seed-users/users.json --jsonArray"'
-  mongo-seed-todos:
-    image: mongo
-    links:
-      - db
-    volumes:
-      - ./mongo-seed-todos:/mongo-seed-todos
-    command: 'bash -c "mongoimport --host db --type json --file /mongo-seed-todos/todos.json --jsonArray"'
   db:
-    image: mongo
+    build: ./mongo
+    restart: always
     ports:
       - '27017:27017'
+    volumes:
+      - ./mongo/data:/data/db
     container_name: todo-db
